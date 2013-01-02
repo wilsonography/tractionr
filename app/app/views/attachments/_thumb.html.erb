@@ -1,0 +1,11 @@
+<li id="attachment-<%= attachment.id %>" class="span3">
+	<a href="<%= attachment.attachment %>" class="fancybox thumbnail"><img src="<%= attachment.attachment.thumb %>" /></a>
+	<h5><%= attachment.title %></h5>
+	<p>
+		<%= attachment.description %>
+	</p>
+		<%= link_to raw("<i class=\"icon-trash icon-white\"></i>"), attachment_path(attachment.id), :remote => true, :method => :delete, :confirm => 'Are you sure?', :class => 'delete-attachment btn btn-danger' %>
+		
+		<%= link_to raw("<i class=\"icon-comment icon-blue\"></i> <span class=\"badge badge-info\">#{attachment.comments.count}</span>"), new_comment_path(:commentable_type => attachment.class.name, :commentable_id => attachment.id), :remote => true, :class => 'btn btn-secondary comments-modal' %>	
+		<%= link_to raw("<i class=\"icon-download icon-white\"></i>"), "#{attachment.attachment}", :class => 'btn btn-primary' %>	
+</li>

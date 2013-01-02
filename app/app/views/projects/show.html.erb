@@ -1,0 +1,70 @@
+<div class="row-fluid">
+
+	<div id="attachment-box" class="span3 well">
+		<%= render :partial => 'attachments/widget' %>
+	</div>
+	
+<div class="span8">
+<h1>
+  <%= best_in_place @project, :title, :type => :input, :ok_button => 'OK', :cancel_button => 'Cancel' %>
+</h1>
+
+<p>
+  <b>Description</b><br>
+  <%= best_in_place @project, :description, :type => :textarea, :ok_button => 'OK', :cancel_button => 'Cancel'  %>
+</p>
+<% if @project.over_budget? %><div class="alert"> <p>You're over budget, ouch!</p></div><% end %>
+<p id="project-budget">
+	<b>Budget:</b> <%= best_in_place @project, :budget, :type => :input, :ok_button => 'OK', :cancel_button => 'Cancel' %>hrs
+</p>
+
+<p>
+	<b>Hours:</b> <%= @project.time_billed %>/<%= @project.time_assigned %>
+</p>
+
+<p>
+  <h2>Phases <%= link_to raw("<i class=\"icon-plus icon-white\"></i>"), new_phase_path(:project_id => @project.id), :remote => true, :class => 'add-phase btn btn-primary new-phase-modal' %></h2>
+  <br />
+   <ul id="phase-list">
+		<%= render :partial => 'phases/project_phases', :locals => {:phases => @project.phases} %>
+	</ul>
+</p>
+
+<p>
+  <b>Created by</b><br>
+  <%= @project.creator.name %>
+</p>
+
+<p>
+  <b>Account</b><br>
+  <%= @project.account.name %>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Back', projects_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_project_path(@project), :class => 'btn' %>
+  <%= link_to 'Delete', project_path(@project), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>
+
+</div>
+</div>
+
+<div id="new-phase-form" class="modal" style="display: none;">
+	<div class="modal-header">
+    <a class="close" data-dismiss="modal">&times;</a>
+    <h3>New Phase</h3>
+  </div>
+  <div class="modal-body">
+    
+  </div>
+</div>
+
+<div id="new-deliverable-form" class="modal" style="display: none;">
+	<div class="modal-header">
+    <a class="close" data-dismiss="modal">&times;</a>
+    <h3>New Deliverable</h3>
+  </div>
+  <div class="modal-body">
+    
+  </div>
+</div>

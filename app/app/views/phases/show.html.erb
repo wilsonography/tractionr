@@ -1,0 +1,37 @@
+<h1>/Phase</h1>
+
+<p>
+  <b>Title</b><br>
+  <%= @phase.title %>
+</p>
+
+<p>
+  <b>Description</b><br>
+  <%= @phase.description %>
+</p>
+
+<p>
+  <b>Project</b><br>
+  <%= @phase.project.title %>
+</p>
+
+<p>
+  <b>Template</b><br>
+  <%= @phase.template.title %>
+</p>
+
+<p>
+  <b>Created by</b><br>
+  <%= @phase.creator.name %>
+</p>
+
+<p>
+  <b>Account</b><br>
+  <%= @phase.account.name %>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Back', phases_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_phase_path(@phase), :class => 'btn' %>
+  <%= link_to 'Delete', phase_path(@phase), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

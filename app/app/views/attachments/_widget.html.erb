@@ -1,0 +1,59 @@
+<h3>Attachments</h3>
+
+<ul class="thumbnails" id="attachments-list">
+
+	<% if @attachments; @attachments.each do |attachment| %>
+		<%= render :partial => 'attachments/thumb', :locals => {:attachment => attachment} %>
+	<% end; end; %>
+</ul>
+
+<div class="modal" id="new-comment-form" style="display: none;">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">&times;</a>
+    <h3>Comments</h3>
+  </div>
+  <div class="modal-body">
+    
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn"  data-dismiss="modal">Cancel</a>
+  </div>
+</div>
+
+<hr class="divider" />
+
+<%= form_for @attachment, :remote => true, :html => { :'data-type' => 'html', :class => 'form-vertical' } do |f| %>
+  <fieldset id="attachment-form">
+
+	    <div class="control-group">
+      <%= f.label :attachment, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.file_field :attachment, :class => 'file_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :title, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :title, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :description, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :description, :class => 'text_field' %>
+      </div>
+    </div>
+    	<% 
+    		var_name = params[:controller].singularize.downcase # article
+			instance_variable_get("@#{var_name}")
+    	%>
+		<%= f.hidden_field :attachable_type, :value => controller_name.classify %>
+		<%= f.hidden_field :attachable_id, :value => instance_variable_get("@#{var_name}").id %>
+    <div>
+      <%= f.submit nil, :class => 'btn btn-primary', :disable_with => 'Submitting…' %>
+      <%= link_to 'Cancel', attachments_path, :class => 'btn' %>
+    </div>
+  </fieldset>
+<% end %>

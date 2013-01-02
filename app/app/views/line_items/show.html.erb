@@ -1,0 +1,37 @@
+<h1>/Line Item</h1>
+
+<p>
+  <b>Description</b><br>
+  <%= @line_item.description %>
+</p>
+
+<p>
+  <b>Amount</b><br>
+  <%= @line_item.amount %>
+</p>
+
+<p>
+  <b>Quantity</b><br>
+  <%= @line_item.quantity %>
+</p>
+
+<p>
+  <b>Invoice</b><br>
+  <%= @line_item.invoice_id %>
+</p>
+
+<p>
+  <b>Created by</b><br>
+  <%= @line_item.created_by %>
+</p>
+
+<p>
+  <b>Account</b><br>
+  <%= @line_item.account_id %>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Back', line_items_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_line_item_path(@line_item), :class => 'btn' %>
+  <%= link_to 'Delete', line_item_path(@line_item), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

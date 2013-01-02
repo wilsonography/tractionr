@@ -1,0 +1,52 @@
+<%= form_for @comment, :html => { :class => 'form-horizontal' } do |f| %>
+  <fieldset>
+    <legend><%= controller.action_name.capitalize %> /Comment</legend>
+
+    <div class="control-group">
+      <%= f.label :text, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :text, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :created_by, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.number_field :created_by, :class => 'number_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :comment_parent_id, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.number_field :comment_parent_id, :class => 'number_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :account_id, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.number_field :account_id, :class => 'number_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :commentable_id, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.number_field :commentable_id, :class => 'number_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :commentable_type, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :commentable_type, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', comments_path, :class => 'btn' %>
+    </div>
+  </fieldset>
+<% end %>

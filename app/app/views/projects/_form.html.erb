@@ -1,0 +1,90 @@
+<div class="row-fluid">
+	<div id="project-attachments" class="span3 well">
+		<h3>Attachments</h3>
+		<div id="project-attachments">
+			<% if @attachments; @attachments.each do |attachment| %>
+				<img src="<%= attachment.attachment %>" /><br />
+			<% end; end; %>
+		</div>
+		
+		<%= form_for @attachment, :remote => true, :html => { :class => 'form-vertical' } do |f| %>
+		  <fieldset id="attachment-form">
+		
+		    <div class="control-group">
+		      <%= f.label :title, :class => 'control-label' %>
+		      <div class="controls">
+		        <%= f.text_field :title, :class => 'text_field' %>
+		      </div>
+		    </div>
+		
+		    <div class="control-group">
+		      <%= f.label :description, :class => 'control-label' %>
+		      <div class="controls">
+		        <%= f.text_field :description, :class => 'text_field' %>
+		      </div>
+		    </div>
+		
+		    <div class="control-group">
+		      <%= f.label :attachment, :class => 'control-label' %>
+		      <div class="controls">
+		        <%= f.file_field :attachment, :class => 'file_field' %>
+		      </div>
+		    </div>
+				<%= f.hidden_field :attachable_type, :value => @project.class.name %>
+				<%= f.hidden_field :attachable_id, :value => @project.id %>
+		    <div>
+		      <%= f.submit nil, :class => 'btn btn-primary', :disable_with => 'Submitting…' %>
+		    </div>
+		  </fieldset>
+		<% end %>
+	</div>
+	
+	<div class="span8">
+		<%= form_for @project, :html => { :class => 'form-horizontal' } do |f| %>
+		  <fieldset id="project-form">
+		    <legend><%= controller.action_name.capitalize %> /Project</legend>
+		
+		    <div class="control-group">
+		      <%= f.label :title, :class => 'control-label' %>
+		      <div class="controls">
+		        <%= f.text_field :title, :class => 'text_field' %>
+		      </div>
+		    </div>
+		
+		    <div class="control-group">
+		      <%= f.label :description, :class => 'control-label' %>
+		      <div class="controls">
+		        <%= f.text_field :description, :class => 'text_field' %>
+		      </div>
+		    </div>
+		    
+		    <div class="control-group">
+		      <%= f.label :active, :class => 'control-label' %>
+		      <div class="controls">
+		        <%= f.check_box :active, :class => 'checkbox_field', :checked => true %>
+		      </div>
+		    </div>
+		    
+		    <div class="control-group">
+		      <%= f.label :budget, :class => 'control-label' %>
+		      <div class="controls">
+		        <%= f.text_field :budget, :class => 'text_field' %>
+		      </div>
+		    </div>
+		    
+		    <div class="control-group">
+		      <%= f.label :company, :class => 'control-label' %>
+		      <div class="controls">
+		        <%= collection_select(:project, :company, Company.all, :id, :name) %>
+		      </div>
+		    </div>
+
+			
+		    <div class="form-actions">
+		      <%= f.submit nil, :class => 'btn btn-primary' %>
+		      <%= link_to 'Cancel', projects_path, :class => 'btn' %>
+		    </div>
+		  </fieldset>
+		<% end %>
+	</div>
+</div>

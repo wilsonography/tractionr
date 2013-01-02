@@ -1,0 +1,52 @@
+<h1>/Deliverable</h1>
+
+<p>
+  <b>Due date</b><br>
+  <%= @deliverable.due_date %>
+</p>
+
+<p>
+  <b>Title</b><br>
+  <%= @deliverable.title %>
+</p>
+
+<p>
+  <b>Description</b><br>
+  <%= @deliverable.description %>
+</p>
+
+<p>
+	<b>Budget:</b> <%= raw '$' if @deliverable.budget.estimate_type == 'flat_rate' %><%= @deliverable.budget.amount %><%= raw 'hrs' if @deliverable.budget.estimate_type == 'hourly' %>
+</p>
+
+<% if @deliverable.tasks %>
+<p>
+	<b>Tasks</b>
+	<ul>
+		<% @deliverable.tasks.each do |t| %>
+			<%= link_to t.title, task_path(t) %>			
+		<% end %>
+	</ul>
+</p>
+<% end %>
+
+<p>
+  <b>Created by</b><br>
+  <%= @deliverable.creator.name %>
+</p>
+
+<p>
+  <b>Phase</b><br>
+  <%= @deliverable.phase.title %>
+</p>
+
+<p>
+  <b>Account</b><br>
+  <%= @deliverable.account.name %>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Back', deliverables_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_deliverable_path(@deliverable), :class => 'btn' %>
+  <%= link_to 'Delete', deliverable_path(@deliverable), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

@@ -1,0 +1,19 @@
+<li class="well">
+	<h2><%= best_in_place p, :title, :type => :input, :ok_button => 'OK', :cancel_button => 'Cancel' %> <%= link_to raw("<i class=\"icon-trash\"></i>"), phase_path(p.id), :remote => true, :method => :delete, :confirm => 'Are you sure?', :class => 'delete-phase btn-small' %></h2>
+	
+	<p>
+		<em>
+		<%= best_in_place p, :description, :type => :textarea, :ok_button => 'OK', :cancel_button => 'Cancel' %>
+		</em>
+	</p>
+	<% if p.deliverables.count < 1 %><h3 style="color: grey"><%= link_to raw("<i class=\"icon-plus icon-white\"></i> Add Deliverable"), new_deliverable_path(:phase_id => p.id), :remote => true, :class => 'add-deliverable btn-small btn-primary new-deliverable-modal', :id => "p-#{p.id}" %></h3><% end %>
+	
+	<% if p.deliverables.count > 0 %>
+		<h3 style="color: grey">Deliverables <%= link_to raw("<i class=\"icon-plus icon-white\"></i>"), new_deliverable_path(:phase_id => p.id), :remote => true, :class => 'add-deliverable btn-small btn-primary new-deliverable-modal', :id => "p-#{p.id}" %></h3>
+	<% end %>
+  	<ul class="deliverable-list" id="dp-<%= p.id %>">
+		<%= render :partial => 'deliverables/phase_deliverables', :locals => {:deliverables => p.deliverables} %>
+	</ul>
+
+	<br />
+</li>

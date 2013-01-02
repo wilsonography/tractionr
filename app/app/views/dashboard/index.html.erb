@@ -1,0 +1,40 @@
+
+<div id="priority-calendar" class="well" style="margin-bottom: 42px;">
+	<%= calendar_for(Time.now.year, Time.now.month, :calendar_class => 'table table-bordered calendar', :yield_surrounding_days => true, &priority_calendar) %>
+</div>
+
+<ul class="nav nav-pills" id="tab-nav">
+  <li><a href="#users" data-toggle="pill">Team status</a></li>
+  <li><a href="#projects" data-toggle="pill">Project status</a></li>
+</ul>
+
+<div id="tab-content" class="tab-content">
+	<div class="tab-pane active" id="users">
+	
+	<% @team.each do |u| %>
+		
+		<div class="well">
+			<h3><%= u.name %></h3>
+			
+			<p>Availability</p>
+			<div class="progress">
+			  <div class="bar" style="width: <%= u.capacity %>%;"></div>
+			</div>
+		</div>
+	<% end %>
+	</div>
+	
+	<div class="tab-pane" id="projects">
+		<div class="well">
+			<div class="progress">
+			  <div class="bar" style="width: 60%;"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="javascript">
+	$(document).ready(function(){
+		$('#tab-nav a[href="#users"]').tab('show')
+	})
+</script>

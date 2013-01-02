@@ -1,0 +1,26 @@
+<h1>Deliverables</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Due date</th>
+      <th>Created at</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @deliverables.each do |deliverable| %>
+      <tr>
+        <td><%= deliverable.id %></td>
+        <td><%= link_to deliverable.due_date, deliverable_path(deliverable) %></td>
+        <td><%= deliverable.created_at %></td>
+        <td>
+          <%= link_to 'Edit', edit_deliverable_path(deliverable), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', deliverable_path(deliverable), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New', new_deliverable_path, :class => 'btn btn-primary' %>

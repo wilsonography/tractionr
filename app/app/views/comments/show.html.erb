@@ -1,0 +1,37 @@
+<h1>/Comment</h1>
+
+<p>
+  <b>Text</b><br>
+  <%= @comment.text %>
+</p>
+
+<p>
+  <b>Created by</b><br>
+  <%= @comment.creator.name %>
+</p>
+
+<p>
+  <b>Comment parent</b><br>
+  <%= @comment.comment.id %>
+</p>
+
+<p>
+  <b>Account</b><br>
+  <%= @comment.account.name %>
+</p>
+
+<p>
+  <b>Commentable</b><br>
+  <%= @comment.commentable_id %>
+</p>
+
+<p>
+  <b>Commentable type</b><br>
+  <%= @comment.commentable_type %>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Back', comments_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_comment_path(@comment), :class => 'btn' %>
+  <%= link_to 'Delete', comment_path(@comment), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

@@ -1,0 +1,49 @@
+<h1>/Account</h1>
+
+<p>
+  <b>Name</b><br>
+  <%= @account.name %>
+</p>
+
+<p>
+  <b>Email</b><br>
+  <%= @account.owner.email %>
+</p>
+
+<p>
+  <b>Account Admin</b><br>
+  <%= link_to @account.owner.name, user_path(@account.owner) %>
+</p>
+
+<p>
+	<b>Users</b>
+	<ul>
+		<% @account.users.each do |u| %>
+			<li><%= link_to u.name, user_path(u) %></li>
+		<% end %>
+	</ul>
+</p>
+
+<p>
+	<b>Companies</b>
+	<ul>
+		<% @account.companies.each do |c| %>
+			<li><%= link_to c.name, company_path(c) %></li>
+		<% end %>
+	</ul>
+</p>
+
+<p>
+	<b>Projects</b>
+	<ul>
+		<% @account.projects.each do |p| %>
+			<li><%= link_to p.title, projects_path(p) %></li>
+		<% end %>
+	</ul>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Back', accounts_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_account_path(@account), :class => 'btn' %>
+  <%= link_to 'Delete', account_path(@account), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

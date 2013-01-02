@@ -1,0 +1,21 @@
+<%= form_for @phase, :remote => true, :html => {:'data-type' => 'html',  :class => 'form-vertical' } do |f| %>
+    <div class="control-group">
+      <%= f.label :title, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :title, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :description, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :description, :class => 'text_field' %>
+      </div>
+    </div>
+    
+    <%= f.hidden_field :project_id, :value => @phase.project_id %>
+
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <a href="#" class="btn"  data-dismiss="modal">Cancel</a>
+      
+<% end %>

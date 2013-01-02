@@ -1,0 +1,67 @@
+@import "twitter/bootstrap/bootstrap";
+body { padding-top: 60px; }
+
+@import "twitter/bootstrap/responsive";
+
+// Set the correct sprite paths
+@iconSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings.png');
+@iconWhiteSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings-white.png');
+
+// Your custom LESS stylesheets goes here
+//
+// Since bootstrap was imported above you have access to its mixins which
+// you may use and inherit here
+//
+// If you'd like to override bootstrap's own variables, you can do so here as well
+// See http://twitter.github.com/bootstrap/less.html for their names and documentation
+//
+// Example:
+// @linkColor: #ff0000;
+
+#project-attachments a {display: block; margin-bottom: 7px;}
+#phase-list, .deliverable-list, .task-list {list-style-type: none; margin-left: 0; padding-left: 0;}
+
+
+.calendar tbody tr td a {min-height: 1.3em !important; display: block; position: relative; padding: 0 3px; margin-bottom: 2px; font-size: .9em;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	-o-border-radius: 4px;
+}
+.calendar tr td {height: 107px; width: 50px; background: #fff; position: relative; border-top: 0;
+	-webkit-box-shadow: 0 0 5px #ccc;
+	-moz-box-shadow: 0 0 5px #ccc;
+	-o-box-shadow: 0 0 5px #ccc;
+	box-shadow: 0 0 5px #ccc;
+}
+.calendar thead th {background: #fff;}
+.calendar tr td.weekend {opacity: .5}
+
+
+.calendar tbody tr td.disabled {opacity: .2; background: #eee; 
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	-o-box-shadow: none;
+	box-shadow: none;
+}
+.calendar tbody tr td.priority-day {}
+
+.calendar tr td.due-date.disabled {opacity: .2;}
+
+.calendar tr td a.priority {background: rgba(255, 153, 0, .5); color: #fff; font-weight: 100;}
+.calendar tr td a.due-date-link {color: #ccc;}
+.calendar tr td.disabled a.due-date-link {color: #000;}
+.calendar tr td.disabled a.due-date-link:hover {color: #fff;}
+
+.calendar tr td a.priority-high {background: rgba(255, 153, 0, .7);}
+.calendar tr td a.priority-medium {background: rgba(60, 199, 33, .7);}
+.calendar tr td a.priority-low {background: rgba(238, 238, 238, .7); color: #666;}
+
+.calendar tr:hover td {background: auto !important;}
+.calendar tr:hover {background: auto !important;}
+
+.calendar .day-num {position: absolute; bottom: 14px; right: 14px; color: #ddd; font-size: 2em; z-index: 0; font-family: Georgia;}
+
+
+
+

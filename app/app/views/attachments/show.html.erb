@@ -1,0 +1,31 @@
+<h1>/Attachment</h1>
+
+<p>
+	<a href="<%= @attachment.attachment %>" class="fancybox"><img src="<%= @attachment.attachment.thumb %>" /></a>
+</p>
+
+<p>
+  <b>Title</b><br>
+  <%= @attachment.title %>
+</p>
+
+<p>
+  <b>Description</b><br>
+  <%= @attachment.description %>
+</p>
+
+<p>
+  <b>Created by</b><br>
+  <%= @attachment.creator.name %>
+</p>
+
+<p>
+  <b>Account</b><br>
+  <%= @attachment.account.name %>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Back', attachments_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_attachment_path(@attachment), :class => 'btn' %>
+  <%= link_to 'Delete', attachment_path(@attachment), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

@@ -1,0 +1,26 @@
+<h1>Phases</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Created at</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @phases.each do |phase| %>
+      <tr>
+        <td><%= phase.id %></td>
+        <td><%= link_to phase.title, phase_path(phase) %></td>
+        <td><%= phase.created_at %></td>
+        <td>
+          <%= link_to 'Edit', edit_phase_path(phase), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', phase_path(phase), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New', new_phase_path, :class => 'btn btn-primary' %>

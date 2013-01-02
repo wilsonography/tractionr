@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Created by:</b>
+  <%= @invoice.created_by %>
+</p>
+
+<p>
+  <b>Account:</b>
+  <%= @invoice.account_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
+<%= link_to 'Back', invoices_path %>

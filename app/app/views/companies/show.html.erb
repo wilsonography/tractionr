@@ -1,0 +1,54 @@
+<h1>/Company</h1>
+
+<p>
+  <b>Name</b><br>
+  <%= @company.name %>
+</p>
+
+<p>
+  <b>Description</b><br>
+  <%= @company.description %>
+</p>
+
+<p>
+  <b>Website</b><br>
+  <%= @company.website %>
+</p>
+
+<p>
+  <b>Primary contact</b><br>
+  <%= @company.primary_contact ? @company.primary_contact.name : '' %>
+</p>
+
+<p>
+	<b>Team Members</b>
+	<ul>
+		<% @company.users.each do |u| %>
+			<li><%= link_to u.name, user_path(u) %> <%= raw '<em>(primary)</em>' if @company.primary_contact == u %></li>
+		<% end %>
+	</ul>
+</p>
+
+<p>
+	<b>Active Projects</b>
+	<ul>
+		<% @company.projects.each do |p| %>
+			<li><%= link_to p.title, project_path(p) if p.active == 1 %></li>
+		<% end %>
+	</ul>
+</p>
+
+<p>
+	<b>Inactive Projects</b>
+	<ul>
+		<% @company.projects.each do |p| %>
+			<li><%= link_to p.title, project_path(p) if p.active == 0 || p.active == nil %></li>
+		<% end %>
+	</ul>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Back', companies_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_company_path(@company), :class => 'btn' %>
+  <%= link_to 'Delete', company_path(@company), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

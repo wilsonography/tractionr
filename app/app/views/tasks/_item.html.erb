@@ -1,0 +1,19 @@
+<li class="<% if task.completed? %>task-complete<% end %>">
+	<dl class="dl-horizontal">
+		<dt>
+		<%= form_for task, :url => {:controller => 'tasks', :action => 'update', :id => task.id }, :html => {:class => 'checkable-form form-horizontal', :style => 'display: inline;'}, :remote => true do |t| %>
+			<%= t.check_box :completed, :class => 'checkable' %>
+		<% end %>
+		</dt>
+		<dd>
+		<em>Due:</em> <%= best_in_place task, :due_date, :type => :date %><br />
+		<%= best_in_place task, :description, :type => :textarea, :ok_button => 'OK', :cancel_button => 'Cancel' %><br />
+		<em>Assigned to:</em> <%= best_in_place task, :user_id, :type => :select, :collection => users_for_inline_select %><br />
+		<em>Priority:</em> <%= best_in_place task, :priority, :type => :select, :collection => [['1', 'High'],['2', 'Normal'],['3', 'Low']] %><br />
+		<em>Budget:</em> <%= best_in_place task, :budget, :type => :input %>
+		
+		<%= link_to raw("<i class=\"icon-trash icon-white\"></i>"), task_path(task.id), :remote => true, :method => :delete, :confirm => 'Are you sure?', :class => 'delete-task btn-small btn-danger' %>
+		</dt>
+	</dl>
+</li>
+		

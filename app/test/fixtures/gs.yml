@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  phase: MyString
+  title: MyString
+  description: MyString
+  project_id: 1
+  template_id: 1
+  created_by: 1
+
+two:
+  phase: MyString
+  title: MyString
+  description: MyString
+  project_id: 1
+  template_id: 1
+  created_by: 1
